@@ -44,4 +44,34 @@ public class InsertArray {
             System.out.println("Invalid index for 2D array");
         }
     }
+
+    public void traverse2DArray() {
+        for (int row = 0; row < arr.length; row++) {
+            for (int col = 0; col < arr[0].length; col++) {
+                System.out.print(arr[row][col] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void searchValue(int value) {
+        for (int row = 0; row < arr.length; row++) {
+            for (int col = 0; col < arr.length; col++) {
+                if (arr[row][col] == value) {
+                    System.out.println("Value is found at row: " + row + " and col: " + col);
+                    return;
+                }
+            }
+        }
+        System.out.println("Value is not found.");
+    }
+
+    public void deleteValue(int row, int col) {
+        try {
+            System.out.println("Successfully deleted: " + arr[row][col]);
+            arr[row][col] = Integer.MIN_VALUE;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid array index.");
+        }
+    }
 }

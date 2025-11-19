@@ -10,5 +10,9 @@ public class Main {
         InsertArray insertArray = new InsertArray(2, 2);
         insertArray.insertValueToArray(0, 1, 4);
         insertArray.accessCell(0, 1);
+        insertArray.traverse2DArray();
+        insertArray.searchValue(4);
+        insertArray.deleteValue(0, 1);
+        insertArray.traverse2DArray();
     }
 }
