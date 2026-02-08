@@ -19,6 +19,18 @@ public class Arraylist {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
+        numbers.add(2, 4);
         System.out.println(numbers);
+        ArrayList<String> stringList = new ArrayList<String>();
+        stringList.add("A");
+        stringList.add("B");
+        stringList.add("C");
+        stringList.add("D");
+        stringList.add("E");
+        stringList.add("F");
+        for (int i = 0; i < stringList.size(); i++) {
+            String letter = stringList.get(i);
+            System.out.println(letter);
+        }
     }
 }
