@@ -14,13 +14,14 @@ import java.util.Arrays;
  */
 public class Arraylist {
 
+//    Creation of an ArrayList
     public static void createArrayList() {
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(30, 20, 10));
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(2, 4);
         System.out.println(numbers);
+    }
+
+//    Insertion to an Arraylist
+    public static ArrayList<String> insertArrayList() {
         ArrayList<String> stringList = new ArrayList<String>();
         stringList.add("A");
         stringList.add("B");
@@ -28,9 +29,36 @@ public class Arraylist {
         stringList.add("D");
         stringList.add("E");
         stringList.add("F");
+        return stringList;
+    }
+
+//    ArrayList Traversal
+    public static void traverseArrayList() {
+        ArrayList<String> stringList = insertArrayList();
         for (int i = 0; i < stringList.size(); i++) {
             String letter = stringList.get(i);
             System.out.println(letter);
         }
+    }
+
+//    Search for an element in ArrayList
+    public static void searchArrayList(String letter) {
+        ArrayList<String> stringList = insertArrayList();
+        for (String letters : stringList) {
+            if (letters.equals(letter)) {
+                System.out.println("The element is found! Here: " + letters);
+                break;
+            }
+        }
+//        IndexOf
+        int index = stringList.indexOf(letter);
+        System.out.println("The element is found at index of: " + index);
+    }
+
+//    Remove element from arraylist
+    public static void removeElement() {
+        ArrayList<String> stringArrayList = insertArrayList();
+        stringArrayList.remove("B");
+        System.out.println(stringArrayList);
     }
 }
