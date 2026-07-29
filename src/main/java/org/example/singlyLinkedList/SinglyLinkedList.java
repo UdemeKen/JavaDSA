@@ -16,10 +16,16 @@ public class SinglyLinkedList {
     public Node tail;
     public int size;
 
+    public SinglyLinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
 //    Create Singly Linked List
     public void createSinglyLinkedList(int nodeValue) {
-        head = new Node();
-        Node node = new Node();
+        head = new Node(nodeValue);
+        Node node = new Node(nodeValue);
         node.value = nodeValue;
         node.next = null;
         head = node;
@@ -29,7 +35,7 @@ public class SinglyLinkedList {
 
 //    Insert Singly Linked List
     public void insertInLinkedList(int nodeValue, int location) {
-        Node node = new Node();
+        Node node = new Node(nodeValue);
         node.value = nodeValue;
         if (head == null) {
             createSinglyLinkedList(nodeValue);
@@ -120,5 +126,12 @@ public class SinglyLinkedList {
             tempNode.next = tempNode.next.next;
             size--;
         }
+    }
+
+//    Delete Entire SinglyLinkedList
+    public void deleteSLL() {
+        head = null;
+        tail = null;
+        System.out.println("The SLL deleted successfully");
     }
 }
