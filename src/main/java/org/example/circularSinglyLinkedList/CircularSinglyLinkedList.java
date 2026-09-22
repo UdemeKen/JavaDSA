@@ -1,4 +1,4 @@
-package org.example.singlyLinkedList;
+package org.example.circularSinglyLinkedList;
 
 import org.example.Node;
 
@@ -9,44 +9,38 @@ import org.example.Node;
  * @license MIT License
  * @see <a href="mailto:udemekendrick@gmail.com">udemekendrick@gmail.com</a>
  * @see <a href="https://udemekendrick.vercel.app">https://udemekendrick.vercel.app</a>
- * @since 6/3/2026
+ * @since 9/22/2026
  */
-public class SinglyLinkedList {
+public class CircularSinglyLinkedList {
     public Node head;
     public Node tail;
     public int size;
 
-    public SinglyLinkedList() {
-        this.head = null;
-        this.tail = null;
-        this.size = 0;
-    }
-
-//    Create Singly Linked List
-    public void createSinglyLinkedList(int nodeValue) {
-        head = new Node();
+    // Create Method
+    public Node createCSLL(int nodeValue) {
         Node node = new Node();
         node.value = nodeValue;
-        node.next = null;
+        node.next = node;
         head = node;
         tail = node;
         size = 1;
+        return head;
     }
 
-//    Insert Singly Linked List
-    public void insertInLinkedList(int nodeValue, int location) {
+    // Insertion Method
+    public void insertNode(int nodeValue, int location) {
         Node node = new Node();
-        node.value = nodeValue;
         if (head == null) {
-            createSinglyLinkedList(nodeValue);
+            createCSLL(nodeValue);
             return;
         } else if (location == 0) {
             node.next = head;
             head = node;
+            tail.next = head;
         } else if (location >= size) {
-            node.next = null;
             tail.next = node;
             tail = node;
+            tail.next = head;
         } else {
             Node tempNode = head;
             int index = 0;
@@ -54,73 +48,75 @@ public class SinglyLinkedList {
                 tempNode = tempNode.next;
                 index++;
             }
-            Node nextNode = tempNode.next;
+            node.next = tempNode.next;
             tempNode.next = node;
-            node.next = nextNode;
         }
         size++;
     }
 
-//    Traverse Singly Linked List
-    public void traverseSinglyLinkedList() {
-        if (head == null) {
-            System.out.println("Singly linked list does not exist!");
-        } else {
+    // Traversal Method
+    public void traverseCll() {
+        if (head != null) {
             Node tempNode = head;
             for (int i = 0; i < size; i++) {
                 System.out.println(tempNode.value);
-                if (i != size - 1) {
-                    System.out.println("->");
+                if (i != size-1) {
+                    System.out.println("-->");
                 }
                 tempNode = tempNode.next;
             }
+        } else {
+            System.out.println("\nCSLL does not exist!");
         }
-        System.out.println("\n");
     }
 
-//    Search for a node
+    // Search Method
     public boolean searchNode(int nodeValue) {
         if (head != null) {
             Node tempNode = head;
             for (int i = 0; i < size; i++) {
                 if (tempNode.value == nodeValue) {
-                    System.out.println("Found the node at location: " + i + "\n");
+                    System.out.println("Found node at location: " + i);
                     return true;
                 }
                 tempNode = tempNode.next;
             }
         }
-        System.out.println("Node not found");
+        System.out.println("Node not found! ");
         return false;
     }
 
-//    Deleting a node from Singly Linked List
-    public void deletionOfNode(int location) {
-        if (head == null) {
-            System.out.println("The Singly Linked List does not exist");
+    // Delete Method
+    public void deleteNode(int location) {
+        if (head != null) {
+            System.out.println("The CSLL does not exist! ");
             return;
         } else if (location == 0) {
             head = head.next;
+            tail.next = head;
             size--;
             if (size == 0) {
                 tail = null;
+                head.next = null;
+                head = null;
             }
-        } else if (location >= size) {
+        } else if (location == size) {
             Node tempNode = head;
-            for (int i = 0; i < size - 1; i++) {
+            for (int i = 0; i < size; i++) {
                 tempNode = tempNode.next;
             }
             if (tempNode == head) {
-                tail = head = null;
+                head.next = null;
+                head = null;
                 size--;
                 return;
             }
-            tempNode.next = null;
+            tempNode.next = head;
             tail = tempNode;
             size--;
         } else {
             Node tempNode = head;
-            for (int i = 0; i < location - 1; i++) {
+            for (int i = 0; i < size; i++) {
                 tempNode = tempNode.next;
             }
             tempNode.next = tempNode.next.next;
@@ -128,10 +124,15 @@ public class SinglyLinkedList {
         }
     }
 
-//    Delete Entire SinglyLinkedList
-    public void deleteSLL() {
-        head = null;
-        tail = null;
-        System.out.println("The SLL deleted successfully");
+    // Delete CSLL
+    public void deleteCSLL() {
+        if (head == null) {
+            System.out.println("The CSLL does not exit!");
+        } else {
+            head = null;
+            tail.next = null;
+            tail = null;
+            System.out.println("The CSLL has been deleted!");
+        }
     }
 }

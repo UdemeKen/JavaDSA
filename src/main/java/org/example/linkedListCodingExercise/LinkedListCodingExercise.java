@@ -25,7 +25,7 @@ public class LinkedListCodingExercise {
 
     // Push method
     public void push(int value) {
-        Node newNode = new Node(value);
+        Node newNode = new Node();
         if (head == null) {
             head = newNode;
             tail = newNode;
@@ -66,7 +66,7 @@ public class LinkedListCodingExercise {
         if (index < 0 || index > size) {
             return false;
         }
-        Node newNode = new Node(data);
+        Node newNode = new Node();
         if (index == 0) {
             newNode.next = head;
             head = newNode;
