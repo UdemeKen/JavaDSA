@@ -1,14 +1,10 @@
 package org.example;
 
-import org.example.circularSinglyLinkedList.CircularSinglyLinkedList;
-import org.example.linkedListCodingExercise.LinkedListCodingExercise;
-import org.example.singlyLinkedList.SinglyLinkedList;
+import org.example.circularSinglyLinkedListCodingExercise.CircularLinkedListCodingExercise;
 
 public class Main {
     public static void main(String[] args) {
-        CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
-        csll.createCSLL(5);
-        System.out.println(csll.head.value);
-        System.out.println(csll.head.next.value);
+        CircularLinkedListCodingExercise cllce = new CircularLinkedListCodingExercise();
+        cllce.prepend(5);
     }
 }
